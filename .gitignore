@@ -1,0 +1,11 @@
+build/
+coverage/
+npm-debug.log
+
+node_modules/
+.DS_Store
+.idea/
+*.iml
+docs/jsdoc-dev
+.nyc_output
+.vscode/

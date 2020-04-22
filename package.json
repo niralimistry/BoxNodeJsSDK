@@ -1,0 +1,69 @@
+{
+  "name": "box-node-sdk",
+  "author": "Box <oss@box.com>",
+  "version": "1.32.0",
+  "description": "Official SDK for Box Plaform APIs",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/box/box-node-sdk.git"
+  },
+  "keywords": [
+    "box",
+    "platform",
+    "api",
+    "apis",
+    "upload",
+    "download",
+    "sdk"
+  ],
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "main": "./lib/box-node-sdk.js",
+  "scripts": {
+    "test": "node Makefile.js",
+    "lint": "node Makefile.js lint",
+    "docs": "node Makefile.js docs",
+    "docs-dev": "node Makefile.js docsDev",
+    "deps": "npm prune && npm install",
+    "patch": "node Makefile.js patch",
+    "minor": "node Makefile.js minor",
+    "major": "node Makefile.js major"
+  },
+  "dependencies": {
+    "bluebird": "^3.7.1",
+    "http-status": "^1.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "merge-options": "^1.0.1",
+    "npm-upgrade": "^2.0.2",
+    "promise-queue": "^2.2.3",
+    "request": "^2.88.0",
+    "url-template": "^2.0.8",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.8",
+    "eslint": "^4.19.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-unicorn": "^4.0.3",
+    "istanbul": "^0.4.3",
+    "jsdoc": "^3.6.3",
+    "jsonlint2": "^1.7.1",
+    "leche": "^2.3.0",
+    "mocha": "^5.2.0",
+    "mockery": "^2.1.0",
+    "nock": "^9.6.1",
+    "np": "^5.1.3",
+    "nyc": "^11.9.0",
+    "shelljs": "^0.8.3",
+    "shelljs-nodecli": "^0.1.1",
+    "sinon": "^7.5.0"
+  },
+  "files": [
+    "config",
+    "lib"
+  ]
+}

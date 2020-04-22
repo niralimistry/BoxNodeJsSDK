@@ -1,0 +1,15 @@
+{
+  "boxAppSettings": {
+    "clientID": "fhhp4jcz9petovgl108f6hs3q8vq7g6k",
+    "clientSecret": "zBNY2DAcM6ybVqiBRjHJpqNK6WxGCerm",
+    "appAuth": {
+      "publicKeyID": "3sy8xb2q",
+      "privateKey": "-----BEGIN ENCRYPTED PRIVATE KEY-----\nMIIFDjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQI2Smslckxv84CAggA\nMBQGCCqGSIb3DQMHBAgm8Io+TWgO7ASCBMioEFH6EdyXD3cTKd7IN7pQHEnmhN9g\nEptZSFEa+GkDeRfWk+TbAiKPrOwrP63qlq7t4N2h8rFB6Q2iP0UpeuDOrKjvmbNB\nJl3ZWal4iSDLGAcz1F5GkwYXUKZotz1jPe7iqjJWMVLRzQMYq9lk6L90Nk+i19XI\nnuBSYswEcR1zTvcjjjaYDth5H2ulagWfRz6c+sd6szyPRsZbgnu1Eq1aN+xt0+vP\nSZLu6cbbY94SAG/l2WNTmCHC07MVxUgdYdnZ9CA8nzvO/4+adU3wUlthCJ08d+Dq\nnYgI/G6lESu5nHHcXra6xetPSLatEI8cl2MpBhaIO9K0mBGxC7Mge74vSzenVqJu\nuifINFAtan+CVnbxHbPR/AmRGZeE1N+HKG5BAuet34cSUgXX3sQY97Ii+lW6fn1O\nJ8X1T4SEln7oBKV5onSlSCB00ADZawGCfDWrxN+nko1G0XXHVXa4G6azl5mrfdV3\nPj7xNbdhoD1wQdue8UNP8DtPTL/BQqsq2abqbfapyzEfO+u17QRNgLTd+vBaHFV+\n3k31zjaudEz2B049ioJ7qjXmWjs8Po36uBjqp7UwyIQAKnj5oBR7bBnKgLHI9BBC\nUnbtry5xM+v2Y5uOhXP1Fz9SKieZC5h46sNotq0E5gzyRajMQb5/QkISFzlQTI1/\ndvDhrcsi05r7GQP7vMjI9i2GJyoKSLaUdvDbCIOFJr7a2UMbScvxGIgpS94vhL3D\nUbD+uAlUcZWBJ8V1qQ7cnrEEZfpGts08FQXJBb4QhF6FOcMjbzswcoDuTk7Bupgp\nczP3nY0pIqiWYJMMQ+gxp3WeXFmbkhH7NZYj/x4WDjAROj2QxV1pTe8xbqwq+Ec3\nA5gdhDfSSNA27GPyUmawD12upUwumC0EKvAqldNX2o9iMseIxCiFR77V0K0Gj+o1\nzJhj/0m+d/o9OCyghezEaqnywyX3Yph+f7KoACp4eYvI8lXF5z9YKWMhQo5+2gt2\n9c8VCISRUSKjJkkzqfmG1kBXEt+JD2kEDmYFjvvaAyWAhGn45mhYZTdXE0AJcA+1\nwj213OHG/G51HEquRi8P+qaHdpskqzjtPGybZYYAAIUTTp9LWpmZuY0YTxSYONnC\nCoZenwnNQpq7D3ahazO4s3fd5g4xuf6GNuBxobYRAUIOuoo6fLmpAoWq17eEUVqJ\nskekWRjQ1a1KiDdOzqZ2tKECjAIno6boJM9NckU79IWQQr4U+0GdbjntcKP9JdiT\n1c2ry1Tp6w6VeQv17YK2WFoSHVK+xCVVzH8t2IpALmSqv7dOGb2BGzEZTcEIBrsj\n8o6y/dSeBOLSaWzOMTWqgdVFC4UqoGlRbLiWxpBnwGWZBI+0yZRPz9fsbvI61swR\nhY3Wi21ylcykfnHa+3Fm+nBUs9YsX1DLj/pu4HCVPlyJ4+hSvmqBDOOCsN/s7tEB\n8pfG6VIePrGGAaI1bN8uO/iPjnwYm8x/LJvjV60RkHh67lOBYnwNYb+gly6qx23N\n3GqLvxFCjtfrl84UNJiH1DTKd2v9DNqTP80ZHBO38xrgpKnupbZbC00TwJrtWsIM\nPwuf09Qqrn+uIY9VSZXULPR+0DzgvW2kZ8AL+5wOv25W6lIz1uTUz4IQehF1q8zv\nE5o=\n-----END ENCRYPTED PRIVATE KEY-----\n",
+      "passphrase": "2c8545e2f379580d0b7d3cee8d54e3d5"
+    }
+  },
+  "enterpriseID": "324660883",
+  "webhooks": {
+    "primaryKey": "rzUArLkcwNQPXcZLcP8Lcc1qVkdvp0cF"
+  }
+}
