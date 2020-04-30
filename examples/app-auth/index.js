@@ -11,6 +11,8 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	BoxSDK = require('box-node-sdk');
 	config = require('config');
+	fileidList = [];
+	fileData = [];
 
 // ------------------------------------------------------------------------------
 // Application Parameters - Fill in with your app's values
@@ -82,6 +84,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
+	console.log("inside" + fileidList);
 	res.render('login');
 });
 
@@ -164,18 +167,33 @@ app.get('/files', function(req, res) {
 		res.redirect('/');
 		return;
 	}
-
+	
 	// Get the user's files in their root folder.  Box uses folder ID "0" to
 	// represent the user's root folder, where we'll be putting all their files.
 	req.sdk.folders.getItems('0', null, function(err, data) {
-
+		debugger;
+		if(res){
+			fileData = data.entries;
+			console.log(fileData);
+			for (var i = 0; i < fileData.length; i++) {
+				if(fileidList. indexOf(fileData[i].id) !== -1){
+					break;
+				}else{
+					fileidList.push(fileData[i].id);
+				}
+			}
+			console.log("fileidList " + fileidList);
+		}
 		res.render('files', {
 			error: err,
 			errorDetails: util.inspect(err),
-			files: data ? data.entries: []
+			files: data ? data.entries: [],
+			
 		});
 	});
 });
+
+
 
 // The upload endpoint requires the multipart middleware to parse out the upload
 // form body, which writes the uploaded file to disk at a temporary location
@@ -232,7 +250,6 @@ app.get('/preview/:id', function(req, res) {
 	// The Box file object has a field called "expiring_embed_link", which can
 	// be used to embed a preview of the file.  We'll fetch this field only.
 	req.sdk.files.get(req.params.id, {fields: 'expiring_embed_link'}, function(err, data) {
-
 		if (err) {
 			res.redirect('/files');
 			return;
@@ -281,6 +298,8 @@ app.get('/logout', function(req, res) {
 		res.redirect('/');
 	});
 })
+
+
 
 // var preview = new Box.Preview();
 // preview.show(configData.FILE_ID, configData.ACCESS_TOKEN, {

@@ -1,3 +1,10 @@
+<head>
+    <title></title>
+    {{#each css}}
+        <script src="files.css"></script>
+    {{/each}}
+</head>
+
 {{#if error}}
 	<div class="alert alert-danger" role="alert">
 		<strong>{{error}}</strong>
@@ -14,17 +21,25 @@
 </form>
 
 <h1>{{email}}'s Files</h1>
-<ul class="media-list">
+
+<table border="1">
+	<tr>
+	<th style="padding:10px">FileId</th>
+	<th style="padding:10px">FileUrl</th>
+	<th style="padding:10px">Download</th>
+	<th style="padding:10px">Preview</th></tr>
 	{{#each files as |file|}}
-		<li class="media" id="{{file.id}}">
-			<div class="media-left">
-				<img src="/thumbnail/{{file.id}}" alt="" />
-			</div>
-			<div class="media-body">
-				{{file.name}}
-				<a href="/download/{{file.id}}" class="btn btn-primary">Download</a>
-				<a href="/preview/{{file.id}}" class="btn btn-primary">Preview</a>
-			</div>
-		</li>
-	{{/each}}
-</ul>
+	<tr class="media" id="{{file.id}}">
+		<td style="padding:10px">{{file.id}}</td>
+		<td style="padding:10px">{{file.name}}</td>
+		<td style="padding:10px"><a href="/download/{{file.id}}" class="btn btn-primary">Download</a></td>
+		<td style="padding:10px"><a href="/preview/{{file.id}}" class="btn btn-primary">Preview</a></td>
+	</tr>
+		{{/each}}
+</table>
+
+{{#if file.expiring_embed_link.url}}
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="{{file.expiring_embed_link.url}}"></iframe>
+</div>
+{{/if}}
