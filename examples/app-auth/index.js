@@ -41,6 +41,62 @@ var app = express(),
 // around user management
 var adminAPIClient = sdk.getAppAuthClient('enterprise', "324660883");
 
+// BoxClient.users.get(client.CURRENT_USER_ID)
+// 	.then(user => console.log('Hello', user.name, '!'))
+// 	.catch(err => console.log('Got an error!', err));
+// var config = new BoxConfig("e6dos9zn7gmuy3aofzlirz50id8o7hn7", "N/A", new Uri("https://localhost:3000"));
+// var session = new OAuthSession("Nxc2EAeZRvhEuZW5sQagkXRCC3MPmUxA", "N/A", 3600, "bearer");
+// var client = new BoxClient(config, session);
+
+var BoxSDK = require('box-node-sdk');
+var sdk = new BoxSDK({
+	clientID: 'e6dos9zn7gmuy3aofzlirz50id8o7hn7',
+	clientSecret: 'rrOefhFTROpJTRrXO6V7ZN0USXrkOsIS'
+});
+
+// the URL to redirect the user to
+
+var authorize_url = sdk.getAuthorizeURL({
+	response_type: 'code'
+});
+
+
+console.log("authorize" + authorize_url);
+// app.redirect(authorize_url);
+app.get('/:authorize_url',function(error,res){
+res.redirect('https://account.box.com/api/oauth2/authorize?response_type=code&client_id=e6dos9zn7gmuy3aofzlirz50id8o7hn7')
+})
+
+const queryString = window.location.search;
+console.log(queryString);
+
+// oauthOpen(authorize_url, async (err, code) => {
+// 	// Step 2: exchange the code for an access token
+// 	const resToken = await axios.post('http://localhost:3001/token', { code: code.code });
+// 	const res = await axios.get('http://localhost:3001/secure', {
+// 		headers: { authorization: resToken.data['access_token'] }
+// 	  });
+
+// 	  document.querySelector('#content').innerHTML =
+// 		`The secret answer is ${res.data.answer}`;
+// 	});
+sdk.getTokensAuthorizationCodeGrant('<requestToken>', null, function(err, tokenInfo) {
+
+	if (err) {
+		// handle error
+	}
+	var tokenStore = new TokenStore();
+
+	tokenStore.write(tokenInfo, function(storeErr) {
+
+		if (storeErr) {
+			// handle token write error
+		}
+
+		var client = sdk.getPersistentClient(tokenInfo, tokenStore);
+	});
+});
+
 // Set up the templating engine (Handlebars)
 app.engine('hbs', exphbs({
 	defaultLayout: 'main',
@@ -84,7 +140,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
-	console.log("inside" + fileidList);
+	// console.log("inside" + fileidList);
 	res.render('login');
 });
 
@@ -171,7 +227,6 @@ app.get('/files', function(req, res) {
 	// Get the user's files in their root folder.  Box uses folder ID "0" to
 	// represent the user's root folder, where we'll be putting all their files.
 	req.sdk.folders.getItems('0', null, function(err, data) {
-		debugger;
 		if(res){
 			fileData = data.entries;
 			console.log(fileData);
