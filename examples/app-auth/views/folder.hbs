@@ -1,0 +1,23 @@
+{{#each folder as |folderItem|}}
+    <div>
+        <p>{{folderItem.id}}</p>
+        <p>{{folderItem.name}}</p>
+    </div>
+{{/each}}
+
+
+{{!-- <table border="1">
+	<tr>
+	<th style="padding:10px">FileId</th>
+	<th style="padding:10px">FileUrl</th>
+	<th style="padding:10px">Download</th>
+	<th style="padding:10px">Preview</th></tr>
+	{{#each files as |file|}}
+	<tr class="media" id="{{file.id}}">
+		<td style="padding:10px">{{file.id}}</td>
+		<td style="padding:10px">{{file.name}}</td>
+		<td style="padding:10px"><a href="/download/{{file.id}}" class="btn btn-primary">Download</a></td>
+		<td style="padding:10px"><a href="/preview/{{file.id}}" class="btn btn-primary">Preview</a></td>
+	</tr>
+		{{/each}}
+</table> --}}

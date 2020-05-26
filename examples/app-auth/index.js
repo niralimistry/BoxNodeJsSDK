@@ -41,9 +41,6 @@ var app = express(),
 // around user management
 var adminAPIClient = sdk.getAppAuthClient('enterprise', "324660883");
 
-// BoxClient.users.get(client.CURRENT_USER_ID)
-// 	.then(user => console.log('Hello', user.name, '!'))
-// 	.catch(err => console.log('Got an error!', err));
 // var config = new BoxConfig("e6dos9zn7gmuy3aofzlirz50id8o7hn7", "N/A", new Uri("https://localhost:3000"));
 // var session = new OAuthSession("Nxc2EAeZRvhEuZW5sQagkXRCC3MPmUxA", "N/A", 3600, "bearer");
 // var client = new BoxClient(config, session);
@@ -62,40 +59,85 @@ var authorize_url = sdk.getAuthorizeURL({
 
 
 console.log("authorize" + authorize_url);
-// app.redirect(authorize_url);
+
+
 app.get('/:authorize_url',function(error,res){
-res.redirect('https://account.box.com/api/oauth2/authorize?response_type=code&client_id=e6dos9zn7gmuy3aofzlirz50id8o7hn7')
+	res.redirect('https://account.box.com/api/oauth2/authorize?response_type=code&client_id=e6dos9zn7gmuy3aofzlirz50id8o7hn7')
 })
 
-const queryString = window.location.search;
-console.log(queryString);
+let TokenStore = require('./token-store');
 
-// oauthOpen(authorize_url, async (err, code) => {
-// 	// Step 2: exchange the code for an access token
-// 	const resToken = await axios.post('http://localhost:3001/token', { code: code.code });
-// 	const res = await axios.get('http://localhost:3001/secure', {
-// 		headers: { authorization: resToken.data['access_token'] }
-// 	  });
+// var client = undefined
+// function getClient() {
+// 	client
+// }
+// function setCient(client) {
+// 	cli
+// }
 
-// 	  document.querySelector('#content').innerHTML =
-// 		`The secret answer is ${res.data.answer}`;
-// 	});
-sdk.getTokensAuthorizationCodeGrant('<requestToken>', null, function(err, tokenInfo) {
+app.get('/oauth/callback', function(req, res){
+	console.log(req.query);
+	let tokenCode = req.query.code;
+	sdk.getTokensAuthorizationCodeGrant(tokenCode, null, (err, tokenInfo) => {
 
-	if (err) {
-		// handle error
-	}
-	var tokenStore = new TokenStore();
-
-	tokenStore.write(tokenInfo, function(storeErr) {
-
-		if (storeErr) {
-			// handle token write error
+		if (err) {
+			// handle error
+		}
+	console.log("tokenInfo" , tokenInfo);
+		let tokenStore = new TokenStore('test1');
+		try {
+			let client = sdk.getPersistentClient(tokenInfo, tokenStore);
+			client.folders.getItems('0').then(value => {
+				console.log(value)
+				res.render('folder',{
+					folder : value.entries
+				})
+			})
+			//console.log(client);
+			
+		} catch(e){
+			console.warn(e)
 		}
 
-		var client = sdk.getPersistentClient(tokenInfo, tokenStore);
+		
+	
 	});
-});
+})
+
+app.use(function(req, res, next) {
+	debugger;
+    req.getUrl = function() {
+      return req.protocol + "://" + req.get('host') + req.originalUrl;
+    }
+    return next();
+  });
+
+//let token =  sdk.getTokensAuthorizationCodeGrant('shFxe5HHJStYxYsHVkqEJn6VfsnPJmNf', null 
+// function(err, tokenInfo) {
+
+// 	if (err) {
+// 		// handle error
+// 	}
+// 		console.log(tokenInfo);
+
+// 		let client = sdk.getPersistentClient(tokenInfo, null);
+// 		console.log("client" + client);
+
+
+
+// 	// tokenStore.write(tokenInfo, function(storeErr) {
+
+// 	// 	if (storeErr) {
+// 	// 		// handle token write error
+// 	// 	}
+	
+// 	// });
+// }
+// ).then(value => {
+// 	console.log("Tokem" , value);
+// })
+
+// console.log("asfsadfdsaf", token)
 
 // Set up the templating engine (Handlebars)
 app.engine('hbs', exphbs({
