@@ -11,7 +11,7 @@
   "author": "Box <oss@box.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "basic-ftp": "^4.6.2",
     "body-parser": "^1.15.0",
     "box-node-sdk": "^1.0.0",
