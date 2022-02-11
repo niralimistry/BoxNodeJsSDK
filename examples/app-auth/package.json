@@ -20,7 +20,7 @@
     "crypto": "^1.0.1",
     "express": "^4.13.4",
     "express-formidable": "^0.1.2",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "^5.3.1",
     "express-session": "^1.13.0",
     "helmet": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
